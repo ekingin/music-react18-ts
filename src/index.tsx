@@ -19,5 +19,5 @@ root.render(
         <App />
       </HashRouter>
     </ThemeProvider>
-  </Provider>
+  </Provider>,
 )

@@ -1,10 +1,9 @@
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { memo, useRef, useState } from 'react'
 import type { FC, ReactNode, ElementRef } from 'react'
 import { Carousel } from 'antd'
 import classNames from 'classnames'
 import { BannerControler, BannerLeft, BannerRight, BannerWrapper } from './style'
-import { useAppSelector, useAppDispatch, shallowEqualState } from '@/store'
-import { fecthRecommendBanners } from '@/store/modules/discover/recommend'
+import { useAppSelector, shallowEqualState } from '@/store'
 
 interface IProps {
   children?: ReactNode
@@ -15,24 +14,16 @@ const TopBanner: FC<IProps> = () => {
   const [bannerIndex, setBannerIndex] = useState(0)
 
   // 获取轮播图数据
-  const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(fecthRecommendBanners())
-  }, [])
   const { banners } = useAppSelector(
     (state) => ({
-      banners: state.recommend.banners
+      banners: state.recommend.banners,
     }),
-    shallowEqualState
+    shallowEqualState,
   )
 
   // 轮播图切换事件
-  const carouselBeforeChange = (from: any, to: any) => {
-    console.log(from, to)
-    setBannerIndex(to)
-  }
   const carouselAfterChange = (current: number) => {
-    console.log(current)
+    setBannerIndex(current)
   }
 
   // 轮播图按钮点击
@@ -45,7 +36,7 @@ const TopBanner: FC<IProps> = () => {
 
   // 记录当前轮播图图片的url
   let bgImageUrl
-  if (bannerIndex >= 0 && banners.length > 0) {
+  if (bannerIndex >= 0 && banners?.length > 0) {
     bgImageUrl = banners[bannerIndex].imageUrl + '?imageView&blur=40x20'
   }
 
@@ -56,20 +47,18 @@ const TopBanner: FC<IProps> = () => {
           <Carousel
             autoplay
             dots={false}
-            // autoplaySpeed={10000}
             effect="fade"
             ref={carouselRef}
-            beforeChange={carouselBeforeChange}
             afterChange={carouselAfterChange}
           >
-            {banners.map((item) => (
+            {banners?.map((item) => (
               <div className="banner-item" key={item.imageUrl}>
                 <img className="image" src={item.imageUrl} alt={item.encodeId} />
               </div>
             ))}
           </Carousel>
           <ul className="dots">
-            {banners.map((item, index) => (
+            {banners?.map((item, index) => (
               <li key={item.imageUrl}>
                 <span className={classNames('item', { active: bannerIndex === index })}></span>
               </li>

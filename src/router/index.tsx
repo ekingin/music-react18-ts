@@ -16,7 +16,7 @@ const Album = lazy(() => import('@/views/discover/c-views/album'))
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Navigate to="/discover" />
+    element: <Navigate to="/discover" />,
   },
   {
     path: '/discover',
@@ -24,45 +24,45 @@ const routes: RouteObject[] = [
     children: [
       {
         path: '/discover',
-        element: <Navigate to="/discover/recommend" />
+        element: <Navigate to="/discover/recommend" />,
       },
       {
         path: '/discover/recommend',
-        element: <Recommend />
+        element: <Recommend />,
       },
       {
         path: '/discover/ranking',
-        element: <Ranking />
+        element: <Ranking />,
       },
       {
         path: '/discover/playlist',
-        element: <Playlist />
+        element: <Playlist />,
       },
       {
         path: '/discover/djradio',
-        element: <Djradio />
+        element: <Djradio />,
       },
       {
         path: '/discover/artist',
-        element: <Artist />
+        element: <Artist />,
       },
       {
         path: '/discover/album',
-        element: <Album />
-      }
-    ]
+        element: <Album />,
+      },
+    ],
   },
   {
     path: '/mine',
-    element: <Mine />
+    element: <Mine />,
   },
   {
     path: '/focus',
-    element: <Focus />
+    element: <Focus />,
   },
   {
     path: '/download',
-    element: <Download />
-  }
+    element: <Download />,
+  },
 ]
 export default routes

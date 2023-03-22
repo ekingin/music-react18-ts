@@ -7,8 +7,8 @@ const ekRequest = new EKRequest({
   interceptors: {
     requestSuccessFn: (config) => {
       return config
-    }
-  }
+    },
+  },
 })
 
 export default ekRequest

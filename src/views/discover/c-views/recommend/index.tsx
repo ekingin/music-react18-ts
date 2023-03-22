@@ -1,17 +1,40 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
 import TopBanner from './c-cpns/top-banner'
+import HotRecommend from './c-cpns/hot-recommend'
+import NewAlbum from './c-cpns/new-album'
+import { RecommendWrapper } from './style'
+import { useAppDispatch } from '@/store'
+import {
+  fecthRecommendDataAction,
+  fetchRankingDataAction,
+} from '@/store/modules/discover/recommend'
+import TopRanking from './c-cpns/top-ranking'
 
 interface IProps {
   children?: ReactNode
 }
 
 const Recommend: FC<IProps> = () => {
+  // 获取推荐中数据
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(fecthRecommendDataAction())
+    dispatch(fetchRankingDataAction())
+  }, [])
+
   return (
-    <div>
+    <RecommendWrapper>
       <TopBanner />
-      Recommend
-    </div>
+      <div className="recommend-content wrap-v980">
+        <div className="left">
+          <HotRecommend />
+          <NewAlbum />
+          <TopRanking />
+        </div>
+        <div className="right">right</div>
+      </div>
+    </RecommendWrapper>
   )
 }
 

@@ -50,7 +50,7 @@ export const BannerLeft = styled.div`
 
 export const BannerRight = styled.a.attrs({
   href: 'https://music.163.com/#/download',
-  target: '_blank'
+  target: '_blank',
 })`
   width: 250px;
   height: 270px;
@@ -63,6 +63,7 @@ export const BannerControler = styled.div`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  height: 63px;
 
   .btn {
     position: absolute;

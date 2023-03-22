@@ -6,8 +6,8 @@ import recommend from './modules/discover/recommend'
 
 const store = configureStore({
   reducer: {
-    recommend
-  }
+    recommend,
+  },
 })
 
 // 从 store 中推导出 RootState、AppDispatch 的类型，以便在其他地方使用

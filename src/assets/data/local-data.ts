@@ -2,33 +2,33 @@ export const headerTitles = [
   {
     title: '发现音乐',
     type: 'path',
-    link: '/discover'
+    link: '/discover',
   },
   {
     title: '我的音乐',
     type: 'path',
-    link: '/mine'
+    link: '/mine',
   },
   {
     title: '关注',
     type: 'path',
-    link: '/focus'
+    link: '/focus',
   },
   {
     title: '商城',
     type: 'link',
-    link: 'https://music.163.com/store/product'
+    link: 'https://music.163.com/store/product',
   },
   {
     title: '音乐人',
     type: 'link',
-    link: 'https://music.163.com/st/musician'
+    link: 'https://music.163.com/st/musician',
   },
   {
     title: '下载客户端',
     type: 'path',
-    link: '/download'
-  }
+    link: '/download',
+  },
 ]
 
 export interface IDiscoverMenuItem {
@@ -38,26 +38,26 @@ export interface IDiscoverMenuItem {
 export const discoverMenu = [
   {
     title: '推荐',
-    link: '/discover/recommend'
+    link: '/discover/recommend',
   },
   {
     title: '排行榜',
-    link: '/discover/ranking'
+    link: '/discover/ranking',
   },
   {
     title: '歌单',
-    link: '/discover/playlist'
+    link: '/discover/playlist',
   },
   {
     title: '主播电台',
-    link: '/discover/djradio'
+    link: '/discover/djradio',
   },
   {
     title: '歌手',
-    link: '/discover/artist'
+    link: '/discover/artist',
   },
   {
     title: '新碟上架',
-    link: '/discover/album'
-  }
+    link: '/discover/album',
+  },
 ]

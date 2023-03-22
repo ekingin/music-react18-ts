@@ -11,23 +11,23 @@ class EKRequest {
     // 1.全局拦截器
     this.instance.interceptors.request.use(
       (config) => config,
-      (err) => err
+      (err) => err,
     )
 
     this.instance.interceptors.response.use(
       (res) => res.data,
-      (err) => err
+      (err) => err,
     )
 
     // 2.实例拦截器
     this.instance.interceptors.request.use(
       config.interceptors?.requestSuccessFn,
-      config.interceptors?.requestFailureFn
+      config.interceptors?.requestFailureFn,
     )
 
     this.instance.interceptors.response.use(
       config.interceptors?.responseSuccessFn,
-      config.interceptors?.responseFailureFn
+      config.interceptors?.responseFailureFn,
     )
   }
 
