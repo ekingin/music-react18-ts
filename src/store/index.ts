@@ -3,10 +3,12 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import type { TypedUseSelectorHook } from 'react-redux'
 
 import recommend from './modules/discover/recommend'
+import player from './modules/player'
 
 const store = configureStore({
   reducer: {
     recommend,
+    player,
   },
 })
 

@@ -29,3 +29,12 @@ export const getPlaylistDetail = (id: number) => {
     },
   })
 }
+
+export function getArtistList(limit = 30) {
+  return ekRequest.get({
+    url: '/artist/list',
+    params: {
+      limit,
+    },
+  })
+}

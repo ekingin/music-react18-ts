@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {
+  getArtistList,
   getBanners,
   getHotRecommends,
   getNewAlbums,
@@ -11,6 +12,7 @@ interface IState {
   hotRecommends: any[]
   newAlbums: any[]
   toplists: any[]
+  artists: any[]
 }
 
 const initialState: IState = {
@@ -18,23 +20,27 @@ const initialState: IState = {
   hotRecommends: [],
   newAlbums: [],
   toplists: [],
+  artists: [],
 }
 
 const recommendSlice = createSlice({
   name: 'commmend',
   initialState,
   reducers: {
-    changeBanners(state, { payload }) {
+    changeBannersAction(state, { payload }) {
       state.banners = payload
     },
-    changeHotRecommends(state, { payload }) {
+    changeHotRecommendsAction(state, { payload }) {
       state.hotRecommends = payload
     },
-    changeNewAlbums(state, { payload }) {
+    changeNewAlbumsAction(state, { payload }) {
       state.newAlbums = payload
     },
-    changeToplists(state, { payload }) {
+    changeToplistsAction(state, { payload }) {
       state.toplists = payload
+    },
+    changeArtistsAction(state, { payload }) {
+      state.artists = payload
     },
   },
 })
@@ -43,13 +49,16 @@ export const fecthRecommendDataAction = createAsyncThunk(
   'fetchRecommendData',
   (arg, { dispatch }) => {
     getBanners().then((res) => {
-      dispatch(changeBanners(res.banners))
+      dispatch(changeBannersAction(res.banners))
     })
     getHotRecommends(8).then((res) => {
-      dispatch(changeHotRecommends(res.result))
+      dispatch(changeHotRecommendsAction(res.result))
     })
     getNewAlbums().then((res) => {
-      dispatch(changeNewAlbums(res.albums))
+      dispatch(changeNewAlbumsAction(res.albums))
+    })
+    getArtistList(5).then((res) => {
+      dispatch(changeArtistsAction(res.artists))
     })
   },
 )
@@ -62,10 +71,15 @@ export const fetchRankingDataAction = createAsyncThunk('fetchRankingData', (arg,
   }
   Promise.all(promises).then((res) => {
     const toplists = res.map((item) => item.playlist)
-    dispatch(changeToplists(toplists))
+    dispatch(changeToplistsAction(toplists))
   })
 })
 
-export const { changeBanners, changeHotRecommends, changeNewAlbums, changeToplists } =
-  recommendSlice.actions
+export const {
+  changeBannersAction,
+  changeHotRecommendsAction,
+  changeNewAlbumsAction,
+  changeToplistsAction,
+  changeArtistsAction,
+} = recommendSlice.actions
 export default recommendSlice.reducer

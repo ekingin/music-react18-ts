@@ -10,6 +10,9 @@ import {
   fetchRankingDataAction,
 } from '@/store/modules/discover/recommend'
 import TopRanking from './c-cpns/top-ranking'
+import UserLogin from './c-cpns/user-login'
+import SignedArtist from './c-cpns/signed-artist'
+import HotAnchor from './c-cpns/hot-anchor'
 
 interface IProps {
   children?: ReactNode
@@ -32,7 +35,11 @@ const Recommend: FC<IProps> = () => {
           <NewAlbum />
           <TopRanking />
         </div>
-        <div className="right">right</div>
+        <div className="right">
+          <UserLogin />
+          <SignedArtist />
+          <HotAnchor />
+        </div>
       </div>
     </RecommendWrapper>
   )

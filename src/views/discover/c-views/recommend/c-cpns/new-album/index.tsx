@@ -37,7 +37,7 @@ const NewAlbum: FC<IProps> = () => {
             {[0, 1].map((pageIndex) => (
               <div key={pageIndex}>
                 <div className="album-list">
-                  {newAlbums.slice(pageIndex * 5, (pageIndex + 1) * 5)?.map((item) => (
+                  {newAlbums?.slice(pageIndex * 5, (pageIndex + 1) * 5)?.map((item) => (
                     <NewAlbumItem item={item} key={item.picUrl}></NewAlbumItem>
                   ))}
                 </div>
